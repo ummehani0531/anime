@@ -2,94 +2,287 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Popular Anime of 2025</title>
+  <title>AnimeVerse</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #fff;
       margin: 0;
       padding: 20px;
-    }
-    h1 {
       text-align: center;
-      color: #333;
     }
-    .anime-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff4c4c;
+      margin-bottom: 20px;
     }
-    .anime-card {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      width: 220px;
-      overflow: hidden;
-      transition: transform 0.2s;
+
+    /* Spinning Cube */
+    .cube-wrapper {
+      perspective: 1000px;
+      margin: 40px auto;
+      width: 120px;
+      height: 120px;
     }
-    .anime-card:hover {
-      transform: scale(1.05);
-    }
-    .anime-card img {
+
+    .cube {
       width: 100%;
-      height: auto;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 5s infinite linear;
+    }
+
+    .cube div {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: #ff4c4c;
+      color: #fff;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 2px solid #fff;
+    }
+
+    .cube .front  { transform: rotateY(  0deg) translateZ(60px); }
+    .cube .back   { transform: rotateY(180deg) translateZ(60px); }
+    .cube .right  { transform: rotateY( 90deg) translateZ(60px); }
+    .cube .left   { transform: rotateY(-90deg) translateZ(60px); }
+    .cube .top    { transform: rotateX( 90deg) translateZ(60px); }
+    .cube .bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    @keyframes spin {
+      from { transform: rotateX(0deg) rotateY(0deg); }
+      to   { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    /* Cards Section */
+    .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 840px; /* 3 cards x 250px + 2 gaps (30px each) */
+  margin: 0 auto;
+}
+
+    .card {
+      width: 250px;
+      height: 350px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
-    .anime-info {
-      padding: 15px;
+
+    .card-back {
+      background-color: #1f1f1f;
+      transform: rotateY(180deg);
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 15px;
     }
-    .anime-title {
-      font-size: 1.1em;
-      margin: 0 0 10px 0;
-      color: #222;
+
+    .card-back h3 {
+      margin-top: 0;
+      color: #ff6b6b;
     }
-    .anime-description {
+
+    .card-back p {
       font-size: 0.9em;
-      color: #555;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
-  <h1>Popular Anime of 2025</h1>
-  <div class="anime-container">
-    <div class="anime-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg" alt="Naruto">
-      <div class="anime-info">
-        <div class="anime-title">Naruto</div>
-        <div class="anime-description">A young ninja strives to become the leader of his village.</div>
-      </div>
+
+  <h1>Welcome to AnimeVerse</h1>
+
+  <!-- 3D Cube -->
+  <div class="cube-wrapper">
+    <div class="cube">
+      <div class="front">ANIMEVERSE</div>
+      <div class="back">ANIMEVERSE</div>
+      <div class="right">ANIMEVERSE</div>
+      <div class="left">ANIMEVERSE</div>
+      <div class="top">ANIMEVERSE</div>
+      <div class="bottom">ANIMEVERSE</div>
     </div>
-    <div class="anime-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/8/8c/Shingeki_no_Kyojin_manga_volume_1.jpg" alt="Attack on Titan">
-      <div class="anime-info">
-        <div class="anime-title">Attack on Titan</div>
-        <div class="anime-description">Humanity fights for survival against giant humanoid creatures.</div>
-      </div>
-    </div>
-    <div class="anime-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/5/5f/Kimetsu_no_Yaiba_Volume_1.png" alt="Demon Slayer">
-      <div class="anime-info">
-        <div class="anime-title">Demon Slayer</div>
-        <div class="anime-description">A boy becomes a demon slayer to save his sister.</div>
-      </div>
-    </div>
-    <div class="anime-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/6/65/One_Piece_volume_1.jpg" alt="One Piece">
-      <div class="anime-info">
-        <div class="anime-title">One Piece</div>
-        <div class="anime-description">Pirates search for the ultimate treasure in a vast ocean world.</div>
-      </div>
-    </div>
-    <div class="anime-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg" alt="Death Note">
-      <div class="anime-info">
-        <div class="anime-title">Death Note</div>
-        <div class="anime-description">A student discovers a notebook that kills anyone whose name is written in it.</div>
-      </div>
-    </div>
-    <!-- Add more anime cards as needed -->
   </div>
+
+  <!-- Anime Cards -->
+ <div class="container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/attack of titans.jpg" alt="Attack on Titan" />
+        </div>
+        <div class="card-back">
+          <h3>Attack on Titan</h3>
+          <p>In a world where Titans hunt humans, Eren Yeager vows to destroy them after witnessing horror. A story of war, freedom, and sacrifice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/demon slayer.jpg" alt="Demon Slayer" />
+        </div>
+        <div class="card-back">
+          <h3>Demon Slayer</h3>
+          <p>Tanjiro becomes a demon slayer after demons kill his family. He seeks revenge and a cure for his sister Nezuko, now turned demon.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/juju.jpg" alt="Jujutsu Kaisen" />
+        </div>
+        <div class="card-back">
+          <h3>Jujutsu Kaisen</h3>
+          <p>Yuji Itadori joins a secret society of sorcerers after eating a cursed object. He battles curses to protect humanity and his friends.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/boruto1.jpg" alt="Boruto: Naruto Next Generations" />
+        </div>
+        <div class="card-back">
+          <h3>Boruto: Naruto Next Generations</h3>
+          <p>The next generation of ninjas, led by Naruto’s son Boruto, face modern-day threats while learning the values of legacy and teamwork.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/one piece.jpg" alt="One Piece" />
+        </div>
+        <div class="card-back">
+          <h3>One Piece</h3>
+          <p>Luffy and his crew sail the Grand Line in search of the legendary treasure "One Piece," with epic adventures, deep lore, and emotional arcs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/aesthetic-my-hero-academia-midoriya-deku-form-p6vestkbpoft15pl.jpg" alt="My Hero Academia" />
+        </div>
+        <div class="card-back">
+          <h3>My Hero Academia</h3>
+          <p>In a society where superpowers (Quirks) are the norm, Izuku Midoriya—born without powers—aims to become the greatest hero with the help of All Might.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/spy fam.png" alt="Spy × Family" />
+        </div>
+        <div class="card-back">
+          <h3>Spy × Family</h3>
+          <p>A master spy, an assassin wife, and a telepathic daughter form a fake family to carry out a secret mission—while hilariously navigating their double lives.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/solo.jpeg" alt="Solo Leveling" />
+        </div>
+        <div class="card-back">
+          <h3>Solo Leveling</h3>
+          <p>Sung Jin-Woo, once the weakest hunter, gains powers after a mysterious dungeon event and rises to become humanity’s strongest hunter.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/daddadan.jpg" alt="Dandadan " />
+        </div>
+        <div class="card-back">
+          <h3>Dandadan </h3>
+          <p>A unique blend of romance and supernatural battles, following two high school students who confront otherworldly threats.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/drstone.jpg" alt="Dr. Stone" />
+        </div>
+        <div class="card-back">
+          <h3>Dr. Stone</h3>
+          <p>The scientific adventure resumes as characters rebuild civilization using the power of science after a mysterious petrification event.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Downloads/sakamoto says wallpaper.jpeg" alt="Sakamoto Days" />
+        </div>
+        <div class="card-back">
+          <h3>Sakamoto Days</h3>
+          <p>A comedic action series about a former assassin who now runs a convenience store, balancing his past with everyday life.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/Users/apple/Desktop/sword.jpeg" alt="Sword of the Demon Hunter" />
+        </div>
+        <div class="card-back">
+          <h3>Sword of the Demon Hunter</h3>
+          <p>An unexpected hit that combines action and supernatural elements, following a demon hunter on a quest for vengeance.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>
+
